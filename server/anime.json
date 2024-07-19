@@ -5,16 +5,24 @@
       "title": "One piece",
       "genre": "Adventure",
       "studioId": 1
+    },
+    {
+      "id": 2,
+      "title": "Demon Slayer",
+      "genre": "Shounen",
+      "studioId": 1
+    },
+    {
+      "id": 3,
+      "title": "Demon Slayer",
+      "genre": "Shounen",
+      "studioId": 2
     }
   ],
   "studios": [
     {
       "id": 1,
       "name": "Ufotable"
-    },
-    {
-      "id": 2,
-      "name": "Studio Ghibli"
     },
     {
       "id": 3,
@@ -27,6 +35,23 @@
     {
       "id": 5,
       "name": "Pierrot Co"
+    },
+    {
+      "id": 6,
+      "name": "Gainax"
+    }
+  ],
+  "directors": [
+    {
+      "id": 1,
+      "name": "Hayao Miyazaki"
+    }
+  ],
+  "characters": [
+    {
+      "id": 1,
+      "name": "Tanjiro",
+      "animeId": 2
     }
   ]
 }
