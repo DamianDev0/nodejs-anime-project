@@ -65,4 +65,52 @@ router.get('/:id', (req, res) => {
     }
 });
 
+// Update a director by ID
+
+router.put('/:id', (req, res) => {
+    try{
+        const data = readDirectors();
+        const directorIndex = data.directors.findIndex(d => d.id === parseInt(req.params.id, 10));
+
+        if(directorIndex != 1){
+            return res.status(404).json({ message: 'Director not found' });
+        }
+
+        const updateDirector = {
+            ...data.directors,
+            name: req.body.name || data.directors[directorIndex].name,
+        }
+        data.directors[directorIndex] = updateDirector;
+        writeDirectors(data);
+
+        res.status(200).json({ message: 'Director', director: updateDirector})
+
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+})
+
+// Delete a director by ID
+
+router.delete('/:id', (req, res) => {
+    try{
+        const data = readDirectors();
+        const directorIndex = data.directors.findIndex(d => d.id === parseInt(req.params.id, 10));
+
+        if(directorIndex == -1){
+            return res.status(404).json({ message: 'Director not found' });
+        }
+
+        data.directors.splice(directorIndex, 1)
+        writeDirectors(data);
+        res.status(200).json({ message: 'Director deleted successfully', director: directorIndex})
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+})
 module.exports = router;

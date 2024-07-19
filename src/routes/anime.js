@@ -80,16 +80,16 @@ router.delete('/:id', (req, res) => {
     try {
         const animeData = readAnime();
         const animes = animeData.animes;
-        const updatedAnimes = animes.filter(anime => anime.id !== parseInt(req.params.id, 10));
+        const deleteAnimes = animes.filter(anime => anime.id !== parseInt(req.params.id, 10));
 
-        if (updatedAnimes.length === animes.length) {
+        if (deleteAnimes.length === animes.length) {
             return res.status(404).json({ message: 'Anime not found' });
         }
 
-        animeData.animes = updatedAnimes;
+        animeData.animes = deleteAnimes;
         writeAnime(animeData);
 
-        res.json({ message: 'Anime successfully deleted' });
+        res.json({ message: 'Anime successfully deleted', anime: deleteAnimes});
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });

@@ -10,7 +10,7 @@ const characterFilePath = path.join(__dirname, '../../server/anime.json');
 const readCharacters = () => {
     const characterData = fs.readFileSync(characterFilePath, 'utf8');
     return JSON.parse(characterData);
-}
+};
 
 // Write characters data to file
 const writeCharacter = (data) => {
@@ -41,11 +41,87 @@ router.post('/', (req, res) => {
         writeCharacter(data);
 
         // Send a success response
-        res.status(201).json({ message: 'Character created successfully' });
+        return res.status(201).json({ message: 'Character created successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');
     }
 });
+
+// Get all characters
+router.get('/', (req, res) => {
+    try {
+        const data = readCharacters();
+        res.json(data.characters);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+// get character by id
+
+router.get('/:id', (req, res) => {
+    try{
+        const data = readCharacters()
+        const singleCharacter = data.characters.find((c) => c.id === parseInt(req.params.id, 10))
+
+        if (!singleCharacter) {
+            return res.status(404).json({ message: 'Character not found' });
+        }
+        res.json(singleCharacter);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+})
+
+// Update a character by ID
+router.put('/:id', (req, res) => {
+    try {
+        const data = readCharacters();
+        const characterIndex = data.characters.findIndex((c) => c.id === parseInt(req.params.id, 10));
+
+        if (characterIndex === -1) {
+            return res.status(404).json({ message: 'Character not found' });
+        }
+
+        const updatedCharacter = {
+            ...data.characters[characterIndex],
+            name: req.body.name || data.characters[characterIndex].name,
+            animeId: req.body.animeId || data.characters[characterIndex].animeId
+        };
+
+        data.characters[characterIndex] = updatedCharacter;
+        writeCharacter(data);
+        res.json({ message: 'Character updated', anime: updatedCharacter});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+// Delete a character by ID
+
+router.delete('/:id', (req, res) => {
+    try {
+        const data = readCharacters();
+        const characterIndex = data.characters.findIndex((character) => character.id === parseInt(req.params.id, 10));
+
+        if (characterIndex === -1) {
+            return res.status(404).json({ message: 'Character not found' });
+        }
+        const deletedCharacter = data.characters.splice(characterIndex, 1);
+
+        writeCharacter(data);
+
+        res.json({ message: 'Character deleted', character: deletedCharacter });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
 
 module.exports = router;

@@ -5,18 +5,18 @@ const path = require('path');
 const router = express.Router();
 const studiosFilePath = path.join(__dirname, '../../server/anime.json');
 
-// Leer datos de estudios
+// Read studio data
 const readStudios = () => {
     const studioData = fs.readFileSync(studiosFilePath, 'utf8');
     return JSON.parse(studioData);
 };
 
-// Escribir datos de estudios
+// Write studio data
 const writeStudios = (studioData) => {
     fs.writeFileSync(studiosFilePath, JSON.stringify(studioData, null, 2), 'utf8');
 };
 
-// Crear estudio
+// Create studio
 router.post('/', (req, res) => {
     try {
         const data = readStudios();
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
     }
 });
 
-// Mostrar todos los estudios
+// Get all studios
 router.get('/', (req, res) => {
     try {
         const data = readStudios();
@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
     }
 });
 
-// Mostrar estudio por ID
+// Get studio by ID
 router.get('/:id', (req, res) => {
     try {
         const data = readStudios();
@@ -63,7 +63,23 @@ router.get('/:id', (req, res) => {
     }
 });
 
-// Eliminar estudio por ID
+// Update studio
+router.put('/:id', (req, res) => {
+    const data = readStudios();
+    const studioIndex = data.studios.findIndex(studio => studio.id === parseInt(req.params.id, 10));
+
+    if (studioIndex === -1) {
+        return res.status(404).json({ message: 'Studio not found' });
+    }
+
+    data.studios[studioIndex].name = req.body.name || data.studios[studioIndex].name;
+
+    writeStudios(data);
+
+    return res.status(200).json({ message: 'Studio updated', studio: data.studios[studioIndex] });
+});
+
+// Delete studio by ID
 router.delete('/:id', (req, res) => {
     try {
         const data = readStudios();

@@ -2,56 +2,165 @@
   "animes": [
     {
       "id": 1,
-      "title": "One piece",
-      "genre": "Adventure",
+      "title": "Spirited Away",
+      "genre": "Fantasy",
       "studioId": 1
     },
     {
       "id": 2,
-      "title": "Demon Slayer",
-      "genre": "Shounen",
+      "title": "My Neighbor Totoro",
+      "genre": "Family",
       "studioId": 1
     },
     {
       "id": 3,
+      "title": "One Punch Man",
+      "genre": "Action",
+      "studioId": 3
+    },
+    {
+      "id": 4,
+      "title": "Death Note",
+      "genre": "Mystery",
+      "studioId": 3
+    },
+    {
+      "id": 5,
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "genre": "Adventure",
+      "studioId": 4
+    },
+    {
+      "id": 6,
+      "title": "Mob Psycho 100",
+      "genre": "Supernatural",
+      "studioId": 4
+    },
+    {
+      "id": 7,
       "title": "Demon Slayer",
       "genre": "Shounen",
-      "studioId": 2
+      "studioId": 6
+    },
+    {
+      "id": 8,
+      "title": "Naruto",
+      "genre": "Action",
+      "studioId": 7
+    },
+    {
+      "id": 9,
+      "title": "Bleach",
+      "genre": "Action",
+      "studioId": 7
+    },
+    {
+      "id": 10,
+      "title": "Princess Mononoke",
+      "genre": "Fantasy",
+      "studioId": 1
+    },
+    {
+      "id": 11,
+      "title": "Howl's Moving Castle",
+      "genre": "Fantasy",
+      "studioId": 1
     }
   ],
   "studios": [
     {
       "id": 1,
-      "name": "Ufotable"
+      "name": "Studio Ghibli"
     },
     {
       "id": 3,
-      "name": "Toei Animation"
+      "name": "Madhouse"
     },
     {
       "id": 4,
-      "name": "Mapple Start"
+      "name": "Bones"
     },
     {
       "id": 5,
-      "name": "Pierrot Co"
+      "name": "Sunrise"
     },
     {
       "id": 6,
-      "name": "Gainax"
+      "name": "Ufotable"
+    },
+    {
+      "id": 7,
+      "name": "Pierrot"
     }
   ],
   "directors": [
     {
       "id": 1,
       "name": "Hayao Miyazaki"
+    },
+    {
+      "id": 2,
+      "name": "Yoshifumi Kondo"
+    },
+    {
+      "id": 3,
+      "name": "Masashi Kishimoto"
+    },
+    {
+      "id": 4,
+      "name": "Tite Kubo"
     }
   ],
   "characters": [
     {
       "id": 1,
-      "name": "Tanjiro",
+      "name": "Chihiro Ogino",
+      "animeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Haku",
+      "animeId": 1
+    },
+    {
+      "id": 3,
+      "name": "Totoro",
       "animeId": 2
+    },
+    {
+      "id": 4,
+      "name": "Satsuki Kusakabe",
+      "animeId": 2
+    },
+    {
+      "id": 5,
+      "name": "Saitama",
+      "animeId": 3
+    },
+    {
+      "id": 6,
+      "name": "Tanjiro Kamado",
+      "animeId": 7
+    },
+    {
+      "id": 7,
+      "name": "Nezuko",
+      "animeId": 7
+    },
+    {
+      "id": 8,
+      "name": "Naruto Uzumaki",
+      "animeId": 8
+    },
+    {
+      "id": 9,
+      "name": "Sasuke Uchiha",
+      "animeId": 8
+    },
+    {
+      "id": 10,
+      "name": "Sophie Hatter",
+      "animeId": 11
     }
   ]
 }
