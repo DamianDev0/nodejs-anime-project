@@ -1,0 +1,32 @@
+{
+  "animes": [
+    {
+      "id": 1,
+      "title": "One piece",
+      "genre": "Adventure",
+      "studioId": 1
+    }
+  ],
+  "studios": [
+    {
+      "id": 1,
+      "name": "Ufotable"
+    },
+    {
+      "id": 2,
+      "name": "Studio Ghibli"
+    },
+    {
+      "id": 3,
+      "name": "Toei Animation"
+    },
+    {
+      "id": 4,
+      "name": "Mapple Start"
+    },
+    {
+      "id": 5,
+      "name": "Pierrot Co"
+    }
+  ]
+}
