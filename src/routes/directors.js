@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
     try {
         const data = readDirectors();
         res.json(data.directors);
-    } catch (error) {
+    } catch (error) { 
         console.error(error);
         res.status(500).send('Server error');
     }
